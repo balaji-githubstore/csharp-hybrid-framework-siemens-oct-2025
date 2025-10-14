@@ -10,32 +10,35 @@ namespace EmployeeManagementAutomation.Test
 {
     public class LoginUITest
     {
+        IWebDriver driver;
 
-        [Test]
-        public void TitleTest()
+        [SetUp]
+        public void BeforeTestMethod()
         {
             ChromeOptions options = new ChromeOptions();
             options.BinaryLocation = @"D:\Balaji\Components\chrome-win64\chrome-win64\chrome.exe";
 
-            IWebDriver driver = new ChromeDriver(options);
+            driver = new ChromeDriver(options);
             driver.Manage().Window.Maximize();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             driver.Navigate().GoToUrl("https://opensource-demo.orangehrmlive.com/");
+        }
 
+        [TearDown]
+        public void AfterTestMethod()
+        {
+            driver.Dispose();
+        }
+
+        [Test]
+        public void TitleTest()
+        {
             Assert.That(driver.Title, Is.EqualTo("OrangeHRM"));
         }
 
         [Test]
         public void HeaderTest()
         {
-            ChromeOptions options = new ChromeOptions();
-            options.BinaryLocation = @"D:\Balaji\Components\chrome-win64\chrome-win64\chrome.exe";
-
-            IWebDriver driver = new ChromeDriver(options);
-            driver.Manage().Window.Maximize();
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            driver.Navigate().GoToUrl("https://opensource-demo.orangehrmlive.com/");
-
             //Assert the header - Login
             string actualHeader = driver.FindElement(By.XPath("//h5")).Text;
             Assert.That(actualHeader, Is.EqualTo("Login"));
