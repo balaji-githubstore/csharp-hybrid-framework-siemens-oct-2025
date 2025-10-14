@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using EmployeeManagementAutomation.Base;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
@@ -8,29 +9,8 @@ using System.Threading.Tasks;
 
 namespace EmployeeManagementAutomation.Test
 {
-    public class LoginTest
+    public class LoginTest : AutomationWrapper
     {
-        IWebDriver driver;
-
-        [SetUp]
-        public void BeforeTestMethod()
-        {
-            ChromeOptions options = new ChromeOptions();
-            options.BinaryLocation = @"D:\Balaji\Components\chrome-win64\chrome-win64\chrome.exe";
-
-            driver = new ChromeDriver(options);
-            driver.Manage().Window.Maximize();
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            driver.Navigate().GoToUrl("https://opensource-demo.orangehrmlive.com/");
-        }
-
-        [TearDown]
-        public void AfterTestMethod()
-        {
-            //driver.Quit();
-            driver.Dispose();
-        }
-
         [Test]
         public void ValidLoginTest()
         {
@@ -39,6 +19,16 @@ namespace EmployeeManagementAutomation.Test
             //click on login
 
             //Assert the header - Dashboard
+        }
+
+        [Test]
+        public void InvalidLoginTest()
+        {
+            driver.FindElement(By.Name("username")).SendKeys("john");
+            //enter password as john123
+            //click on login
+
+            //Assert the error - Invalid credentials
         }
     }
 }
