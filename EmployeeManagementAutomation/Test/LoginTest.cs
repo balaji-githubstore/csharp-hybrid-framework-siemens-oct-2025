@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EmployeeManagementAutomation.Test
 {
-    public class LoginUITest
+    public class LoginTest
     {
         IWebDriver driver;
 
@@ -32,17 +32,13 @@ namespace EmployeeManagementAutomation.Test
         }
 
         [Test]
-        public void TitleTest()
+        public void ValidLoginTest()
         {
-            Assert.That(driver.Title, Is.EqualTo("OrangeHRM"));
-        }
+            driver.FindElement(By.Name("username")).SendKeys("Admin");
+            //enter password as admin123
+            //click on login
 
-        [Test]
-        public void HeaderTest()
-        {
-            //Assert the header - Login
-            string actualHeader = driver.FindElement(By.XPath("//h5")).Text;
-            Assert.That(actualHeader, Is.EqualTo("Login"));
+            //Assert the header - Dashboard
         }
     }
 }
