@@ -24,6 +24,21 @@ namespace EmployeeManagementAutomation.Test
 
             Assert.That(driver.Title, Is.EqualTo("OrangeHRM"));
         }
-        //configure local repo and commit
+
+        [Test]
+        public void HeaderTest()
+        {
+            ChromeOptions options = new ChromeOptions();
+            options.BinaryLocation = @"D:\Balaji\Components\chrome-win64\chrome-win64\chrome.exe";
+
+            IWebDriver driver = new ChromeDriver(options);
+            driver.Manage().Window.Maximize();
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            driver.Navigate().GoToUrl("https://opensource-demo.orangehrmlive.com/");
+
+            //Assert the header - Login
+            string actualHeader = driver.FindElement(By.XPath("//h5")).Text;
+            Assert.That(actualHeader, Is.EqualTo("Login"));
+        }
     }
 }
