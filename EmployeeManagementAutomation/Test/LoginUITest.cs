@@ -24,7 +24,6 @@ namespace EmployeeManagementAutomation.Test
 
             Assert.That(driver.Title, Is.EqualTo("OrangeHRM"));
         }
-
         //configure local repo and commit
     }
 }
