@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace EmployeeManagementAutomation.Base
 {
+    /// <summary>
+    /// Browser and Report Configuration 
+    /// </summary>
     public class AutomationWrapper
     {
         protected IWebDriver driver;
