@@ -18,22 +18,28 @@ namespace EmployeeManagementAutomation.Test
             driver.FindElement(By.Name("password")).SendKeys("admin123");
             driver.FindElement(By.XPath("//button[normalize-space()='Login']")).Click();
 
-            //Assert the header - Dashboard
             string actualHeader=driver.FindElement(By.XPath("//h6[contains(normalize-space(),'Dash')]")).Text;
             Assert.That(actualHeader, Is.EqualTo("Dashboard"));
         }
 
-        [Test]
-        public void InvalidLoginTest()
+
+        //create static method that return object[] 
+        //john,john123,Invalid credentials
+        //saul,saul123,Invalid credentials
+
+        //will start at 11:25 AM IST
+
+        //[Test]
+        //[TestCase("joh","john123", "Invalid credentials")]
+        //[TestCase("saul", "saul123", "Invalid credentials")]
+        public void InvalidLoginTest(string username,string password,string expectedError)
         {
-            driver.FindElement(By.Name("username")).SendKeys("john");
-            driver.FindElement(By.Name("password")).SendKeys("admin123");
+            driver.FindElement(By.Name("username")).SendKeys(username);
+            driver.FindElement(By.Name("password")).SendKeys(password);
             driver.FindElement(By.XPath("//button[normalize-space()='Login']")).Click();
 
-            //Assert the error - Invalid credentials
             string actualError = driver.FindElement(By.XPath("//p[contains(normalize-space(),'Invalid')]")).Text;
-            Assert.That(actualError, Does.Contain("Invalid credentials"));
-
+            Assert.That(actualError, Does.Contain(expectedError));
         }
     }
 }
