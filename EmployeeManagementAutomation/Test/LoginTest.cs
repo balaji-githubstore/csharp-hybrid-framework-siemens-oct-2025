@@ -22,15 +22,29 @@ namespace EmployeeManagementAutomation.Test
             Assert.That(actualHeader, Is.EqualTo("Dashboard"));
         }
 
+        public static object[] InvalidLoginData()
+        {
+            string[] data1 = new string[3];
+            data1[0] = "john";
+            data1[1] = "john123";
+            data1[2] = "Invalid credentials";
 
-        //create static method that return object[] 
-        //john,john123,Invalid credentials
-        //saul,saul123,Invalid credentials
+            string[] data2 = new string[3];
+            data2[0] = "saul";
+            data2[1] = "saul123";
+            data2[2] = "Invalid credentials";
 
-        //will start at 11:25 AM IST
+            object[] allData = new object[2];
+            allData[0] = data1;
+            allData[1] = data2;
 
-        //[Test]
-        //[TestCase("joh","john123", "Invalid credentials")]
+            return allData;
+        }
+
+
+        [Test]
+        [TestCaseSource(nameof(InvalidLoginData))]
+        //[TestCase("john","john123", "Invalid credentials")]
         //[TestCase("saul", "saul123", "Invalid credentials")]
         public void InvalidLoginTest(string username,string password,string expectedError)
         {

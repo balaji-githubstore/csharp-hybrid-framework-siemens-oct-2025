@@ -8,7 +8,7 @@ namespace EmployeeManagementAutomation.Test
 {
     public class ZDemo1Test
     {
-
+        //Don't work on demo file. Create method for invalid
         public static object[] invalidData()
         {
             //data1[] size = number of arguments
@@ -33,8 +33,8 @@ namespace EmployeeManagementAutomation.Test
             return allData;
         }
 
-        [Test]
-        [TestCaseSource(nameof(invalidData))]
+       // [Test]
+        //[TestCaseSource(nameof(invalidData))]
         public void InvalidTest(string username,string password)
         {
             Console.WriteLine("invalid"+username+password);
