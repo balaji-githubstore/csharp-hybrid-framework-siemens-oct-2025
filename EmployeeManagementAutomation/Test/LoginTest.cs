@@ -15,20 +15,25 @@ namespace EmployeeManagementAutomation.Test
         public void ValidLoginTest()
         {
             driver.FindElement(By.Name("username")).SendKeys("Admin");
-            //enter password as admin123
-            //click on login
+            driver.FindElement(By.Name("password")).SendKeys("admin123");
+            driver.FindElement(By.XPath("//button[normalize-space()='Login']")).Click();
 
             //Assert the header - Dashboard
+            string actualHeader=driver.FindElement(By.XPath("//h6[contains(normalize-space(),'Dash')]")).Text;
+            Assert.That(actualHeader, Is.EqualTo("Dashboard"));
         }
 
         [Test]
         public void InvalidLoginTest()
         {
             driver.FindElement(By.Name("username")).SendKeys("john");
-            //enter password as john123
-            //click on login
+            driver.FindElement(By.Name("password")).SendKeys("admin123");
+            driver.FindElement(By.XPath("//button[normalize-space()='Login']")).Click();
 
             //Assert the error - Invalid credentials
+            string actualError = driver.FindElement(By.XPath("//p[contains(normalize-space(),'Invalid')]")).Text;
+            Assert.That(actualError, Does.Contain("Invalid credentials"));
+
         }
     }
 }
