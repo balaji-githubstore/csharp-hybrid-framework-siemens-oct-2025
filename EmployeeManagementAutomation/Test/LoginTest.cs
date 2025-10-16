@@ -24,7 +24,7 @@ namespace EmployeeManagementAutomation.Test
         }
 
         [Test]
-        [TestCaseSource(typeof(DataSource),nameof(DataSource.InvalidLoginData))]
+        [TestCaseSource(typeof(DataSource),nameof(DataSource.InvalidLoginDataFromExcel))]
         //[TestCase("john", "john123", "Invalid credentials")]
         //[TestCase("saul", "saul123", "Invalid credentials")]
         public void InvalidLoginTest(string username, string password, string expectedError)

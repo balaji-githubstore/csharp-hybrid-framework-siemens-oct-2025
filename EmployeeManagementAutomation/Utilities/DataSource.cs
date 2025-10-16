@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace EmployeeManagementAutomation.Utilities
 {
     /// <summary>
-    /// This class contains all data for the [TestCaseSource] 
+    /// This class contains all data and also map all data from external files like excel, json for the [TestCaseSource] 
+    /// 
     /// </summary>
     public class DataSource
     {
@@ -27,6 +28,13 @@ namespace EmployeeManagementAutomation.Utilities
             allData[0] = data1;
             allData[1] = data2;
 
+            return allData;
+        }
+
+
+        public static object[] InvalidLoginDataFromExcel()
+        {
+            object[] allData = ExcelSource.GetSheetIntoObjectArray("TestData/orange-test-data.xlsx", "InvalidLoginTest");
             return allData;
         }
     }

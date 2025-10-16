@@ -8,9 +8,12 @@ using EmployeeManagementAutomation.Utilities;
 
 namespace EmployeeManagementAutomation.Test
 {
+    /// <summary>
+    /// Not part of the framework.
+    /// </summary>
     public class ZDemo2Excel
     {
-        [Test]
+        //[Test]
         public void ReadExcelTest()
         {
             XLWorkbook book = new XLWorkbook(@"TestData/orange-test-data.xlsx");

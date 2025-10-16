@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace EmployeeManagementAutomation.Test
 {
+    /// <summary>
+    /// Not part of the framework.
+    /// </summary>
     public class ZDemo1Test
     {
         //Don't work on demo file. Create method for invalid
