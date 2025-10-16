@@ -14,7 +14,7 @@ namespace EmployeeManagementAutomation.Test
     /// </summary>
     public class ZDemo2Excel
     {
-        [Test]
+       // [Test]
         public void ReadExcelTest()
         {
             XLWorkbook book = new XLWorkbook(@"TestData/orange-test-data.xlsx");

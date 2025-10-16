@@ -12,6 +12,15 @@ namespace EmployeeManagementAutomation.Utilities
     /// </summary>
     public class DataSource
     {
+        public static object[] ValidLoginData()
+        {
+            string[] data1 = { "Admin", "admin123", "Dashboard" };
+            string[] data2 = { "Admin", "admin123", "Dashboard" };
+
+            object[] allData = { data1, data2 };
+
+            return allData;
+        }
         public static object[] InvalidLoginData()
         {
             string[] data1 = new string[3];
