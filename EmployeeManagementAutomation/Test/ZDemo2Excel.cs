@@ -13,16 +13,31 @@ namespace EmployeeManagementAutomation.Test
         [Test]
         public void ReadExcelTest()
         {
-            XLWorkbook book = new XLWorkbook(@"D:\Balaji\Company\Siemens Oct 2025\AutomationFramework\EmployeeManagementAutomation\TestData\orange-test-data.xlsx");
+            XLWorkbook book = new XLWorkbook(@"TestData/orange-test-data.xlsx");
 
             var sheet = book.Worksheet("InvalidLoginTest");
 
             var range = sheet.RangeUsed();
 
-            string cellValue = range.Cell(1, 2).GetString();
-            Console.WriteLine(cellValue);
+            int rowCount = range.RowCount();
+            int colCount=range.ColumnCount();
+
+            object[] allData = new object[rowCount-1];
 
             //read all cell value and print it
+            for (int r=2;r<=rowCount;r++)
+            {
+                string[] data = new string[colCount];
+                for(int c=1;c<=colCount;c++)
+                {
+                    string cellValue = range.Cell(r, c).GetString();
+                    Console.WriteLine(cellValue);
+                    data[c-1] = cellValue;
+                }
+
+                allData[r-2]=data;
+            }
+
 
             book.Dispose();
 
