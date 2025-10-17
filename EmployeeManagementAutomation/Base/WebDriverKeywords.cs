@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace EmployeeManagementAutomation.Base
 {
+    /// <summary>
+    /// All IWebDriver methods, reusable keywords, wait conditions will be handled.
+    /// </summary>
     public class WebDriverKeywords
     {
         private IWebDriver _driver;
