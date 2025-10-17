@@ -17,22 +17,26 @@ namespace EmployeeManagementAutomation.Test
         [TestCaseSource(typeof(DataSource), nameof(DataSource.AddValidEmployeeDataFromExcel))]
         public void AddValidEmployeeTest(string username,string password,string firstName,string middleName,string lastName)
         {
-            driver.FindElement(By.Name("username")).SendKeys(username);
-            driver.FindElement(By.Name("password")).SendKeys(password);
-            driver.FindElement(By.XPath("//button[normalize-space()='Login' or normalize-space()='登录' ]")).Click();
+            //LoginPage
+            LoginPage login = new LoginPage(driver);
+            login.EnterUsername("Admin");
+            login.EnterPassword("admin123");
+            login.ClickOnLogin();
 
-
+            //MainPage
             MainPage main=new MainPage(driver);
             main.ClickOnPIMMenu();
-            //driver.FindElement(By.XPath("//span[text()='PIM']")).Click();
+
+            //PIMPage
             driver.FindElement(By.XPath("//a[text()='Add Employee']")).Click();
 
+            //AddEmployeePage
             driver.FindElement(By.Name("firstName")).SendKeys(firstName);
             driver.FindElement(By.Name("middleName")).SendKeys(middleName);
             driver.FindElement(By.Name("lastName")).SendKeys(lastName);
-
             driver.FindElement(By.XPath("//button[normalize-space()='Save']")).Click();
 
+            //EmployeePersonalDetailPage
             string actualProfileName = driver.FindElement(By.XPath($"//h6[contains(normalize-space(),'{firstName}')]")).Text;
             string actualFirstName=driver.FindElement(By.Name("firstName")).GetAttribute("value");
 
