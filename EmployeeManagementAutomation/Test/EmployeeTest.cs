@@ -1,4 +1,5 @@
 ﻿using EmployeeManagementAutomation.Base;
+using EmployeeManagementAutomation.Pages;
 using EmployeeManagementAutomation.Utilities;
 using OpenQA.Selenium;
 using System;
@@ -20,7 +21,10 @@ namespace EmployeeManagementAutomation.Test
             driver.FindElement(By.Name("password")).SendKeys(password);
             driver.FindElement(By.XPath("//button[normalize-space()='Login' or normalize-space()='登录' ]")).Click();
 
-            driver.FindElement(By.XPath("//span[text()='PIM']")).Click();
+
+            MainPage main=new MainPage(driver);
+            main.ClickOnPIMMenu();
+            //driver.FindElement(By.XPath("//span[text()='PIM']")).Click();
             driver.FindElement(By.XPath("//a[text()='Add Employee']")).Click();
 
             driver.FindElement(By.Name("firstName")).SendKeys(firstName);
