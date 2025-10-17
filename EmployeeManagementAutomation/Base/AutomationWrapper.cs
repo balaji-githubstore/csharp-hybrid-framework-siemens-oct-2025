@@ -1,5 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Edge;
+using OpenQA.Selenium.Firefox;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,10 +22,28 @@ namespace EmployeeManagementAutomation.Base
         [SetUp]
         public void BeforeTestMethod()
         {
-            ChromeOptions options = new ChromeOptions();
-            options.BinaryLocation = @"D:\Balaji\Components\chrome-win64\chrome-win64\chrome.exe";
+            string browserName = "Edge";
 
-            driver = new ChromeDriver(options);
+            if (browserName.ToLower().Equals("edge"))
+            {
+                EdgeOptions options=new EdgeOptions();
+                //options.BinaryLocation = @"";
+                driver = new EdgeDriver(options);
+            }
+            else if (browserName.ToLower().Equals("ff"))
+            {
+                driver = new FirefoxDriver();
+            }
+            else
+            {
+                ChromeOptions options = new ChromeOptions();
+                options.BinaryLocation = @"D:\Balaji\Components\chrome-win64\chrome-win64\chrome.exe";
+
+                driver = new ChromeDriver(options);
+            }
+
+
+
             driver.Manage().Window.Maximize();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             driver.Navigate().GoToUrl("https://opensource-demo.orangehrmlive.com/");
