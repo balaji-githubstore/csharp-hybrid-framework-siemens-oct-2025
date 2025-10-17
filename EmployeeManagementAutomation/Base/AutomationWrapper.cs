@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+//[assembly: Parallelizable(ParallelScope.Fixtures)]
+
 namespace EmployeeManagementAutomation.Base
 {
     /// <summary>
