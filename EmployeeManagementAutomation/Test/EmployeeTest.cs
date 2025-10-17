@@ -1,4 +1,5 @@
 ﻿using EmployeeManagementAutomation.Base;
+using EmployeeManagementAutomation.Utilities;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -12,21 +13,30 @@ namespace EmployeeManagementAutomation.Test
     {
 
         //add the data to excel
-        [Test]
-        public void AddValidEmployeeTest()
+        [TestCaseSource(typeof(DataSource), nameof(DataSource.AddValidEmployeeDataFromExcel))]
+        public void AddValidEmployeeTest(string username,string password,string firstName,string middleName,string lastName)
         {
-
-            driver.FindElement(By.Name("username")).SendKeys("Admin");
-            driver.FindElement(By.Name("password")).SendKeys("admin123");
+            driver.FindElement(By.Name("username")).SendKeys(username);
+            driver.FindElement(By.Name("password")).SendKeys(password);
             driver.FindElement(By.XPath("//button[normalize-space()='Login' or normalize-space()='登录' ]")).Click();
 
-            //click on PIM menu
-            //Click on Add Employee 
-            // enter firstname, middlename, lastname
-            //click on save 
+            driver.FindElement(By.XPath("//span[text()='PIM']")).Click();
+            driver.FindElement(By.XPath("//a[text()='Add Employee']")).Click();
 
-            //assert profile name - firstname lastname
-            //assert the firstname textbox -- firstname
+            driver.FindElement(By.Name("firstName")).SendKeys(firstName);
+            driver.FindElement(By.Name("middleName")).SendKeys(middleName);
+            driver.FindElement(By.Name("lastName")).SendKeys(lastName);
+
+            driver.FindElement(By.XPath("//button[normalize-space()='Save']")).Click();
+
+            string actualProfileName = driver.FindElement(By.XPath($"//h6[contains(normalize-space(),'{firstName}')]")).Text;
+            string actualFirstName=driver.FindElement(By.Name("firstName")).GetAttribute("value");
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(actualProfileName, Is.EqualTo($"{firstName} {lastName}"));
+                Assert.That(actualFirstName, Is.EqualTo(firstName));
+            });
         }
     }
 }

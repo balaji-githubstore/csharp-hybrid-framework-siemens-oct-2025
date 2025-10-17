@@ -43,6 +43,20 @@ namespace EmployeeManagementAutomation.Test
             Console.WriteLine("invalid"+username+password);
         }
 
+        // [Test]
+        //[TestCaseSource(nameof(invalidData))]
+        public void InvalidTest123()
+        {
+            string name = "hello";
+            string name1 = "hello123";
+            string firstName = "jack";
+            Console.WriteLine(name+" "+name1);
 
+            Console.WriteLine($"{name} {name1} - printing for check");
+
+            Console.WriteLine($"//h6[contains(normalize-space(),'{firstName}')]");
+
+            Console.WriteLine("//h6[contains(normalize-space(),'"+firstName+"')]");
+        }
     }
 }

@@ -46,5 +46,11 @@ namespace EmployeeManagementAutomation.Utilities
             object[] allData = ExcelSource.GetSheetIntoObjectArray("TestData/orange-test-data.xlsx", "InvalidLoginTest");
             return allData;
         }
+
+        public static object[] AddValidEmployeeDataFromExcel()
+        {
+            object[] allData = ExcelSource.GetSheetIntoObjectArray("TestData/orange-test-data.xlsx", "AddValidEmployeeTest");
+            return allData;
+        }
     }
 }
