@@ -13,7 +13,6 @@ namespace EmployeeManagementAutomation.Test
     public class EmployeeTest : AutomationWrapper
     {
 
-        //add the data to excel
         [TestCaseSource(typeof(DataSource), nameof(DataSource.AddValidEmployeeDataFromExcel))]
         public void AddValidEmployeeTest(string username,string password,string firstName,string middleName,string lastName)
         {

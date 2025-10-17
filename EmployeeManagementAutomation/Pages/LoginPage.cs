@@ -12,7 +12,7 @@ namespace EmployeeManagementAutomation.Pages
     /// <summary>
     /// Handles all elements inside the LoginPage
     /// </summary>
-    public class LoginPage
+    public class LoginPage : WebDriverKeywords
     {
         private By _usernameLocator = By.Name("username");
         private By _passwordLocator = By.Name("password");
@@ -21,7 +21,7 @@ namespace EmployeeManagementAutomation.Pages
 
         private readonly IWebDriver _driver;
 
-        public LoginPage(IWebDriver driver)
+        public LoginPage(IWebDriver driver):base(driver) 
         {
             _driver = driver;
         }
