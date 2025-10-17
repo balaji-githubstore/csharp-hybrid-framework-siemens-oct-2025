@@ -10,6 +10,8 @@ namespace EmployeeManagementAutomation.Pages
 {
     public class MainPage
     {
+        private By _pimLocator = By.XPath("//span[text()='PIM']");
+
         private readonly IWebDriver _driver;
 
         public MainPage(IWebDriver driver)
@@ -19,7 +21,7 @@ namespace EmployeeManagementAutomation.Pages
 
         public void ClickOnPIMMenu()
         {
-            _driver.FindElement(By.XPath("//span[text()='PIM']")).Click();
+            _driver.FindElement(_pimLocator).Click();
         }
     }
 }

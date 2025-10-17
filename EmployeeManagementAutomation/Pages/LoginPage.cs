@@ -14,6 +14,11 @@ namespace EmployeeManagementAutomation.Pages
     /// </summary>
     public class LoginPage
     {
+        private By _usernameLocator = By.Name("username");
+        private By _passwordLocator = By.Name("password");
+        private By _loginLocator = By.XPath("//button[normalize-space()='Login' or normalize-space()='登录' ]");
+        private By _errorLocator = By.XPath("//p[contains(normalize-space(),'Invalid')]");
+
         private readonly IWebDriver _driver;
 
         public LoginPage(IWebDriver driver)
@@ -23,24 +28,28 @@ namespace EmployeeManagementAutomation.Pages
 
         public void EnterUsername(string username)
         {
-            _driver.FindElement(By.Name("username")).SendKeys(username);
+            _driver.FindElement(_usernameLocator).SendKeys(username);
         }
 
         public void EnterPassword(string password)
         {
-            _driver.FindElement(By.Name("password")).SendKeys(password);
+            _driver.FindElement(_passwordLocator).SendKeys(password);
         }
 
         public void ClickOnLogin()
         {
-            _driver.FindElement(By.XPath("//button[normalize-space()='Login' or normalize-space()='登录' ]")).Click();
+            _driver.FindElement(_loginLocator).Click();
         }
 
         public string GetInvalidErrorMessage()
         {
-            return _driver.FindElement(By.XPath("//p[contains(normalize-space(),'Invalid')]")).Text;
+            return _driver.FindElement(_errorLocator).Text;
         }
 
+        public string GetUsernamePlaceholder()
+        {
+            return _driver.FindElement(_usernameLocator).GetAttribute("placeholder");
+        }
 
     }
 }

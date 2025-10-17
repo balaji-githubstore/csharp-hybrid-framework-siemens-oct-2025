@@ -9,7 +9,9 @@ namespace EmployeeManagementAutomation.Pages
 {
     public class DashboardPage
     {
-        private IWebDriver _driver;
+        private By _dashboardHeader = By.XPath("//h6[contains(normalize-space(),'Dash')]");
+
+        private readonly IWebDriver _driver;
         public DashboardPage(IWebDriver driver)
         {
             _driver = driver;
@@ -18,7 +20,7 @@ namespace EmployeeManagementAutomation.Pages
 
         public string GetDashboardHeader()
         {
-            return _driver.FindElement(By.XPath("//h6[contains(normalize-space(),'Dash')]")).Text;
+            return _driver.FindElement(_dashboardHeader).Text;
         }
     }
 }
