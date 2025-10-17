@@ -12,23 +12,15 @@ namespace EmployeeManagementAutomation.Base
     public class WebDriverKeywords
     {
         private IWebDriver _driver;
-     //   private DefaultWait<IWebDriver> _wait;
 
         public WebDriverKeywords(IWebDriver driver)
         {
             _driver = driver;
-
-            //_wait = new DefaultWait<IWebDriver>(_driver);
-            //_wait.Timeout=TimeSpan.FromSeconds(20);
-            //_wait.IgnoreExceptionTypes(typeof(Exception)));
-
         }
-
 
         public void ClickElement(By locator)
         {
             _driver.FindElement(locator).Click();
-           // _wait.Until(x => x.FindElement(locator)).Click();
         }
 
         public void SendTextToElement(By locator, string text)
@@ -39,6 +31,11 @@ namespace EmployeeManagementAutomation.Base
         public string GetTextFromElement(By locator)
         {
             return _driver.FindElement(locator).Text;
+        }
+
+        public string GetAttributeValueFromElement(By locator,string attributeName)
+        {
+            return _driver.FindElement(locator).GetAttribute(attributeName);
         }
 
         public void SwitchToWindowByTitle(string title)

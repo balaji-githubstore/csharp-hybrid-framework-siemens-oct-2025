@@ -28,27 +28,32 @@ namespace EmployeeManagementAutomation.Pages
 
         public void EnterUsername(string username)
         {
-            _driver.FindElement(_usernameLocator).SendKeys(username);
+            //_driver.FindElement(_usernameLocator).SendKeys(username);
+            base.SendTextToElement(_usernameLocator, username);
         }
 
         public void EnterPassword(string password)
         {
-            _driver.FindElement(_passwordLocator).SendKeys(password);
+            //_driver.FindElement(_passwordLocator).SendKeys(password);
+            base.SendTextToElement(_passwordLocator,password);  
         }
 
         public void ClickOnLogin()
         {
-            _driver.FindElement(_loginLocator).Click();
+            //_driver.FindElement(_loginLocator).Click();
+            base.ClickElement(_loginLocator);
         }
 
         public string GetInvalidErrorMessage()
         {
-            return _driver.FindElement(_errorLocator).Text;
+            //return _driver.FindElement(_errorLocator).Text;
+            return base.GetTextFromElement(_errorLocator);
         }
 
         public string GetUsernamePlaceholder()
         {
-            return _driver.FindElement(_usernameLocator).GetAttribute("placeholder");
+            //return _driver.FindElement(_usernameLocator).GetAttribute("placeholder");
+            return base.GetAttributeValueFromElement(_usernameLocator, "placeholder");
         }
 
     }

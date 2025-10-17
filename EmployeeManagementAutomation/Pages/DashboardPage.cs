@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using EmployeeManagementAutomation.Base;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace EmployeeManagementAutomation.Pages
 {
-    public class DashboardPage
+    public class DashboardPage : WebDriverKeywords
     {
         private By _dashboardHeader = By.XPath("//h6[contains(normalize-space(),'Dash')]");
 
         private readonly IWebDriver _driver;
-        public DashboardPage(IWebDriver driver)
+        public DashboardPage(IWebDriver driver):base(driver) 
         {
             _driver = driver;
         }
