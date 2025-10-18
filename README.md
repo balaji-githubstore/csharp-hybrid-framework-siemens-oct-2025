@@ -4,7 +4,7 @@
 ## 📂 Repositories Overview
 
 ### 🔹 Final Project steps available in  
-**Session Details Folder:** 
+**Session Details Folder:**  `Final Assessment - Caption Project` – contains `.docx` file
 
 ### 🔹 C# Concepts  
 **Repository:** [C#-concept](https://github.com/balaji-githubstore/csharp-selenium-siemens-oct-2025.git)  
