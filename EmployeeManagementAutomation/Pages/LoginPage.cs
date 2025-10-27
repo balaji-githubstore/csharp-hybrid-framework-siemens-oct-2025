@@ -1,6 +1,7 @@
 ﻿using DocumentFormat.OpenXml.Bibliography;
 using EmployeeManagementAutomation.Base;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace EmployeeManagementAutomation.Pages
     /// </summary>
     public class LoginPage : WebDriverKeywords
     {
-        private By _usernameLocator = By.Name("username");
+        private readonly By _usernameLocator = By.Name("username");
         private By _passwordLocator = By.Name("password");
         private By _loginLocator = By.XPath("//button[normalize-space()='Login' or normalize-space()='登录' ]");
         private By _errorLocator = By.XPath("//p[contains(normalize-space(),'Invalid')]");

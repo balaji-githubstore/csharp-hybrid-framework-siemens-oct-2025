@@ -21,6 +21,7 @@ namespace EmployeeManagementAutomation.Base
             _driver = driver;
         }
 
+       
         public void ClickElement(By locator)
         {
             _driver.FindElement(locator).Click();
