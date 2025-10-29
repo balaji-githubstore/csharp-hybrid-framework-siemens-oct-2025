@@ -45,5 +45,11 @@ namespace EmployeeManagementAutomation.Test
                 Assert.That(actualFirstName, Is.EqualTo(firstName));
             });
         }
+
+        [Test]
+        public void AddInvalidEmployeeTest()
+        {
+
+        }
     }
 }
