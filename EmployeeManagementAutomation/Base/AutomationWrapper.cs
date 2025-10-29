@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using Microsoft.Extensions.Configuration;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
@@ -18,11 +19,23 @@ namespace EmployeeManagementAutomation.Base
     public class AutomationWrapper
     {
         protected IWebDriver driver;
+        protected BrowserSettings browserSettings;
+
+        public void InitConfigScript()
+        {
+            var config = new ConfigurationBuilder()
+                    .SetBasePath(AppContext.BaseDirectory)
+                    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                    .Build();
+
+            browserSettings = config.GetSection("BrowserSettings").Get<BrowserSettings>();
+        }
 
         [SetUp]
         public void BeforeTestMethod()
         {
-            string browserName = "Edge";
+            InitConfigScript();
+            string browserName = browserSettings.BrowserName;
 
             if (browserName.ToLower().Equals("edge"))
             {
@@ -37,16 +50,15 @@ namespace EmployeeManagementAutomation.Base
             else
             {
                 ChromeOptions options = new ChromeOptions();
-                options.BinaryLocation = @"D:\Balaji\Components\chrome-win64\chrome-win64\chrome.exe";
+                //options.BinaryLocation = @"D:\Balaji\Components\chrome-win64\chrome-win64\chrome.exe";
+                options.BinaryLocation = browserSettings.ChromeBinaryLocation;
 
                 driver = new ChromeDriver(options);
             }
 
-
-
             driver.Manage().Window.Maximize();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            driver.Navigate().GoToUrl("https://opensource-demo.orangehrmlive.com/");
+            driver.Navigate().GoToUrl(browserSettings.BaseUrl);
         }
 
         [TearDown]
