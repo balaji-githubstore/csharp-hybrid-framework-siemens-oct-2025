@@ -11,13 +11,13 @@ namespace EmployeeManagementAutomation.Test
 {
     public class LoginUITest : AutomationWrapper 
     {
-        [Test]
+        [Test,Category("regression")]
         public void TitleTest()
         {
             Assert.That(driver.Title, Is.EqualTo("OrangeHRM"));
         }
 
-        [Test]
+        [Test,Category("smoke")]
         public void HeaderTest()
         {
             //Assert the header - Login

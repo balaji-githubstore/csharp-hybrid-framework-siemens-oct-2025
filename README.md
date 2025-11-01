@@ -32,6 +32,22 @@ Selenium WebDriver such as:
 | `b2-webdriver-keyword` | ⚙️ no keywords added |
 
 ---
+
+## 🧪 Python-Playwright
+**Repository:** [Python-Playwright](https://github.com/balaji-githubstore/python-playwright-siemens-oct-2025.git)
+- Python and Playwright Concepts  
+
+
+## 🧪 Python-Pytest-Playwright
+**Repository:** [Python-Pytest](https://github.com/balaji-githubstore/python-pytest-siemens-oct-2025.git)
+- Python and Pytest Framework Design Concepts  
+
+- ## 🧪 C# Framework - Last Day Re-design of C# Hybrid Framework with appsetting.json & extent report config.
+**Repository:** [C#-hybrid-framework-OpenEMR](https://github.com/balaji-githubstore/csharp-hybrid-framework2-siemens-oct-2025.git)
+| Branch | Description |
+|--------|-------------|
+| `open-emr` | ✅ Framework re-design with appsetting.json & extent report config. |
+
 ## 👤 Author
 
 **Balaji Dinakaran**  

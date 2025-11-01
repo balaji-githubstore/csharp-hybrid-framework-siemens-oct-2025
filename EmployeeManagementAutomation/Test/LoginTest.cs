@@ -13,7 +13,7 @@ namespace EmployeeManagementAutomation.Test
 {
     public class LoginTest : AutomationWrapper
     {
-        [Test]
+        [Test, Category("regression")]
         public void ValidLoginTest()
         { 
             LoginPage login=new LoginPage(driver);
